@@ -3,6 +3,9 @@
 
     <string name="app_name">dice-game</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="player1_name">Player 1</string>
+    <string name="player2_name">Player 2</string>
+    <string name="hold">Hold</string>
+    <string name="rol">Rol!</string>
 
 </resources>
