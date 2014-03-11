@@ -7,4 +7,13 @@
     <string name="player2_name">Player 2</string>
     <string name="hold">Hold</string>
     <string name="rol">Rol!</string>
+    
+    <string-array name="messages">
+        <item>Sorry but you get the 1, next player turn</item>
+        <item>You get a 2 what are you going to do?</item>
+        <item>So, a 3? it\'s half bad and half good isn\'t</item>
+        <item>So, how about a 4 in your count</item>
+        <item>Well, well a 5 it\'s not every day</item>
+        <item>I\'m sure you are going to keep the 6 in your count</item>
+    </string-array>
 </resources>
