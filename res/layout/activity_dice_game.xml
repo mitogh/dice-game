@@ -14,19 +14,19 @@
         android:id="@+id/player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"/>
+        android:textSize="20sp"/>
     
     <TextView 
         android:id="@+id/player2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"/>
+        android:textSize="20sp"/>
     
     <TextView 
         android:id="@+id/points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="60sp"
+        android:textSize="24sp"
         android:gravity="center"/>
     
     
@@ -40,14 +40,14 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/hold"
-	        android:textSize="30sp"/>
+	        android:textSize="20sp"/>
 	
 		<Button 
 	        android:id="@+id/rol_button"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/rol"
-	        android:textSize="30sp"/>
+	        android:textSize="20sp"/>
 	</LinearLayout>
 
 </LinearLayout>

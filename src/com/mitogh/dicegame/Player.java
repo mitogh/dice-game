@@ -14,6 +14,11 @@ public class Player {
 		return mScore;
 	}
 	public void setScore(int score) {
-		if(score >= 0 && score <= 6)	mScore = score;
+		if(mScore >= 0) 	mScore += score;
+	}
+	
+	public boolean isWinner(){
+		if(mScore >= 100) 	return true;
+		else				return false;
 	}
 }

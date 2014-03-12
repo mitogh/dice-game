@@ -15,8 +15,10 @@ import android.widget.TextView;
 public class DiceGame extends Activity {
 
 	// GUI Elements
-	private TextView mPlayer1;
-	private TextView mPlayer2;
+	private TextView[] mPlayersGUI = {
+			null,
+			null
+	};
 	private TextView mPoints;
 	private Button mHold;
 	private Button mRol;
@@ -39,10 +41,10 @@ public class DiceGame extends Activity {
         
         mMessages = getResources().getStringArray(R.array.messages);
         random = new Random();
-        mPlayer1 = (TextView) findViewById(R.id.player1);
-        mPlayer1.setText("Player 1, score: " + players[0].getScore());
-        mPlayer2 = (TextView) findViewById(R.id.player2);
-        mPlayer2.setText("Player 2, score: " + players[1].getScore());
+        mPlayersGUI[0] = (TextView) findViewById(R.id.player1);
+        mPlayersGUI[0].setText("Player 1, score: " + players[0].getScore());
+        mPlayersGUI[1] = (TextView) findViewById(R.id.player2);
+        mPlayersGUI[1].setText("Player 2, score: " + players[1].getScore());
         
         mPoints = (TextView) findViewById(R.id.points);
         mPoints.setText("" + 0);
@@ -53,20 +55,6 @@ public class DiceGame extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				players[mCurrentPlayer].setScore(total);
-				if(players[mCurrentPlayer].getScore() >= 100){
-					mPlayer1.setText("Player " + (mCurrentPlayer + 1) + " wins");
-				}else{
-					if(mCurrentPlayer == 0){
-						mCurrentPlayer = 1;
-						mPlayer1.setText("Player 1, score: " + players[0].getScore());
-					}else{
-						mCurrentPlayer = 0;
-						mPlayer2.setText("Player 2, score: " + players[1].getScore());
-					}
-				}
-				mHold.setEnabled(false);
-				total = 0;
 			}
 		});
         
@@ -77,18 +65,17 @@ public class DiceGame extends Activity {
 			public void onClick(View v) {
 				number = random.nextInt(6) + 1;
 				if(number == 1){
-					mHold.setEnabled(false);
 					total = 0;
+					gameFlow();
+					mHold.setEnabled(false);
 				}else{
 					total += number;
+					mPoints.setText("Total = " + total);
 					mHold.setEnabled(true);
 				}
-				mPoints.setText("" + total);
-				
 				AlertDialog.Builder builder = new AlertDialog.Builder(DiceGame.this);
 				builder.setMessage(mMessages[number - 1])
 					.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-						
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
 						}
@@ -97,8 +84,16 @@ public class DiceGame extends Activity {
 				builder.show();
 			}
 		});
+        
+        mHold.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				gameFlow();
+				
+			}
+		});
     }
-
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -106,4 +101,33 @@ public class DiceGame extends Activity {
         return true;
     }
     
+    /**
+     * Reset the values for the next player, score and total of points
+     */
+    public void gameFlow(){
+    	updateScore();
+    	nextPlayer();
+    	total = 0;
+    	// Disable hold button
+    	mHold.setEnabled(false);
+    }
+    
+    /**
+     * Updates the current player score at the board
+     * with the latest score.
+     */
+    public void updateScore(){
+    	players[mCurrentPlayer].setScore(total);
+    	mPlayersGUI[mCurrentPlayer].setText("Score: " + players[mCurrentPlayer].getScore());
+    }
+    
+    /**
+     * This function allows to change to the next player in the players
+     * array, when reaches the last player restart to the first player.
+     */
+    public void nextPlayer(){
+    	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
+    }
+
+
 }
