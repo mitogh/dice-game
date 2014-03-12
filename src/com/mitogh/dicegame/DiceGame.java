@@ -5,8 +5,8 @@ import java.util.Random;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -41,33 +41,33 @@ public class DiceGame extends Activity {
         
         mMessages = getResources().getStringArray(R.array.messages);
         random = new Random();
+        // Player 1 GUI
         mPlayersGUI[0] = (TextView) findViewById(R.id.player1);
-        mPlayersGUI[0].setText("Player 1, score: " + players[0].getScore());
+        mPlayersGUI[0].setText("Score: 0");
+        players[0].setName("Player 1");
+        // Player 2 GUI
         mPlayersGUI[1] = (TextView) findViewById(R.id.player2);
-        mPlayersGUI[1].setText("Player 2, score: " + players[1].getScore());
+        mPlayersGUI[1].setText("Score: 0");
+        players[1].setName("Player 2");
         
         mPoints = (TextView) findViewById(R.id.points);
-        mPoints.setText("" + 0);
         
         mHold = (Button) findViewById(R.id.hold_button);
         mHold.setEnabled(false);
-        mHold.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-			}
-		});
         
         mRol = (Button) findViewById(R.id.rol_button);
+        mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#CC0000"));
+        
         mRol.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
+				// Random number from 1 to 6;
 				number = random.nextInt(6) + 1;
 				if(number == 1){
 					total = 0;
+					updateScore();
 					gameFlow();
-					mHold.setEnabled(false);
 				}else{
 					total += number;
 					mPoints.setText("Total = " + total);
@@ -88,8 +88,12 @@ public class DiceGame extends Activity {
         mHold.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				gameFlow();
-				
+				updateScore();
+				if(thereIsWinner()){
+					updateWinnerMessage();
+				}else{
+					gameFlow();
+				}
 			}
 		});
     }
@@ -102,14 +106,27 @@ public class DiceGame extends Activity {
     }
     
     /**
+     * 
+     */
+    public boolean thereIsWinner(){
+    	return players[mCurrentPlayer].isWinner(); 
+    }
+    
+    /**
      * Reset the values for the next player, score and total of points
      */
     public void gameFlow(){
-    	updateScore();
     	nextPlayer();
     	total = 0;
     	// Disable hold button
     	mHold.setEnabled(false);
+    }
+    /**
+     * 
+     */
+    public void updateWinnerMessage(){
+    	total = 0; 
+    	mPoints.setText(players[mCurrentPlayer].getName() + " is the winner!");
     }
     
     /**
@@ -126,8 +143,8 @@ public class DiceGame extends Activity {
      * array, when reaches the last player restart to the first player.
      */
     public void nextPlayer(){
+    	mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#000000"));
     	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
+    	mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#CC0000"));
     }
-
-
 }
