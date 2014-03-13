@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class DiceGame extends Activity {
 			null,
 			null
 	};
+	private TextView mRounds;
 	private TextView mPoints;
 	private Button mHold;
 	private Button mRol;
@@ -35,11 +37,17 @@ public class DiceGame extends Activity {
 	private int mCurrentPlayer = 0;
 	private String[] mMessages = null;
 	private int total = 0;
+	private int round = 1; 
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dice_game);
+        
+        mRounds = (TextView) findViewById(R.id.round);
+        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
+        mRounds.setTypeface(face);
+        mRounds.setText("ROUND " + round);
         
         mMessages = getResources().getStringArray(R.array.messages);
         random = new Random();
@@ -148,11 +156,19 @@ public class DiceGame extends Activity {
      * array, when reaches the last player restart to the first player.
      */
     private void nextPlayer(){
+    	updateRound();
     	mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#000000"));
     	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
     	mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#CC0000"));
     }
     
+    private void updateRound(){
+    	if(mCurrentPlayer == 1){
+    		round++;
+    		mRounds.setText("ROUND " + round);
+    	}
+    }
+
     private void playSound(){
     	MediaPlayer player = MediaPlayer.create(this, R.raw.rol_dice);
     	player.start();
