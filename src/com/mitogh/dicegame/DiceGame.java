@@ -113,7 +113,7 @@ public class DiceGame extends Activity {
      * @return	boolean		Returns true if the current player wins the game 
      * 						false if not.
      */
-    public boolean thereIsWinner(){
+    private boolean thereIsWinner(){
     	return players[mCurrentPlayer].isWinner(); 
     }
     
@@ -138,7 +138,7 @@ public class DiceGame extends Activity {
      * Updates the current player score at the board
      * with the latest score.
      */
-    public void updateScore(){
+    private void updateScore(){
     	players[mCurrentPlayer].setScore(total);
     	mPlayersGUI[mCurrentPlayer].setText("Score: " + players[mCurrentPlayer].getScore());
     }
@@ -147,7 +147,7 @@ public class DiceGame extends Activity {
      * This function allows to change to the next player in the players
      * array, when reaches the last player restart to the first player.
      */
-    public void nextPlayer(){
+    private void nextPlayer(){
     	mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#000000"));
     	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
     	mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#CC0000"));
