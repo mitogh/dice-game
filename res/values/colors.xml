@@ -17,6 +17,8 @@
     <color name="button_hold_background_pressed">#597606</color>
     <color name="text_hold_color_pressed">#99cc00</color>   
     
+    <color name="button_hold_shadow_active">#669900</color>
+    
     <!-- Button Roll -->
     <!-- Active or Default -->
     <color name="button_roll_background_active">#ff4444</color>
