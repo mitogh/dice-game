@@ -5,8 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="player1_name">Player 1</string>
     <string name="player2_name">Player 2</string>
-    <string name="hold">Hold</string>
-    <string name="rol">Rol!</string>
+    <string name="hold">HOLD</string>
+    <string name="rol">ROL</string>
     
     <string-array name="messages">
         <item>Sorry but you get the 1, next player turn</item>

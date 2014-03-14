@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -15,6 +15,18 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <style name="rol_button" parent="@android:style/Widget.Button">
+		<item name="android:textSize">@dimen/buttons_font_size</item>
+		<item name="android:paddingTop">@dimen/buttons_padding_top</item>
+		<item name="android:paddingBottom">@dimen/buttons_padding_top</item>
+		<item name="android:paddingLeft">@dimen/buttons_padding_left</item>
+		<item name="android:paddingRight">@dimen/buttons_padding_left</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:gravity">right</item>
+		<item name="android:background">@drawable/rol_button</item>
+		<item name="android:textColor">@color/button_rol</item>
     </style>
 
 </resources>

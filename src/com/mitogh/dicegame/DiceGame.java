@@ -47,17 +47,17 @@ public class DiceGame extends Activity {
         mRounds = (TextView) findViewById(R.id.round);
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
         mRounds.setTypeface(face);
-        mRounds.setText("ROUND " + round);
+        mRounds.setText("Round " + round);
         
         mMessages = getResources().getStringArray(R.array.messages);
         random = new Random();
         // Player 1 GUI
         mPlayersGUI[0] = (TextView) findViewById(R.id.player1);
-        mPlayersGUI[0].setText("Score: 0");
+        mPlayersGUI[0].setText("0");
         players[0].setName("Player 1");
         // Player 2 GUI
         mPlayersGUI[1] = (TextView) findViewById(R.id.player2);
-        mPlayersGUI[1].setText("Score: 0");
+        mPlayersGUI[1].setText("0");
         players[1].setName("Player 2");
         
         mPoints = (TextView) findViewById(R.id.points);
@@ -148,7 +148,7 @@ public class DiceGame extends Activity {
      */
     private void updateScore(){
     	players[mCurrentPlayer].setScore(total);
-    	mPlayersGUI[mCurrentPlayer].setText("Score: " + players[mCurrentPlayer].getScore());
+    	mPlayersGUI[mCurrentPlayer].setText("" + players[mCurrentPlayer].getScore());
     }
     
     /**
@@ -165,7 +165,7 @@ public class DiceGame extends Activity {
     private void updateRound(){
     	if(mCurrentPlayer == 1){
     		round++;
-    		mRounds.setText("ROUND " + round);
+    		mRounds.setText("Round " + round);
     	}
     }
 
