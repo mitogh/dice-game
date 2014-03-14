@@ -110,6 +110,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/hold"
+	        android:layout_marginLeft="30dp"
 	        style="@style/button_hold"/>
 	
 		<Button 
@@ -117,6 +118,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/roll"
+	        android:layout_marginRight="30dp"
 	        style="@style/button_roll"/>
 	</RelativeLayout>
 

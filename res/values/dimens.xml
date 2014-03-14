@@ -11,6 +11,6 @@
     <dimen name="points_font_size">80sp</dimen>
     
     <dimen name="buttons_font_size">60sp</dimen>
-    <dimen name="buttons_padding_top">15dp</dimen>
-    <dimen name="buttons_padding_left">30dp</dimen>
+    <dimen name="buttons_padding_top">10dp</dimen>
+    <dimen name="buttons_padding_left">40dp</dimen>
 </resources>
