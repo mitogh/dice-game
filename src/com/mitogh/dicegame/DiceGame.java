@@ -37,7 +37,8 @@ public class DiceGame extends Activity {
 	private int mCurrentPlayer = 0;
 	private String[] mMessages = null;
 	private int total = 0;
-	private int round = 1; 
+	private int round = 1;
+	private final String ROUND = "ROUND";
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class DiceGame extends Activity {
         mRounds = (TextView) findViewById(R.id.round);
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
         mRounds.setTypeface(face);
-        mRounds.setText("Round " + round);
+        mRounds.setText(ROUND + " " + round);
         
         mMessages = getResources().getStringArray(R.array.messages);
         random = new Random();
@@ -165,7 +166,7 @@ public class DiceGame extends Activity {
     private void updateRound(){
     	if(mCurrentPlayer == 1){
     		round++;
-    		mRounds.setText("Round " + round);
+    		mRounds.setText(ROUND + " " + round);
     	}
     }
 
