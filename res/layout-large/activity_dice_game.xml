@@ -66,19 +66,14 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/hold"
-	        android:textSize="@dimen/buttons_font_size"
-	        android:paddingTop="@dimen/buttons_padding_top"
-	        android:paddingBottom="@dimen/buttons_padding_top"
-	        android:paddingLeft="@dimen/buttons_padding_left"
-	        android:paddingRight="@dimen/buttons_padding_left"
-	        android:gravity="left"/>
+	        style="@style/button_hold"/>
 	
 		<Button 
 	        android:id="@+id/rol_button"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/rol"	
-	        style="@style/rol_button"/>
+	        style="@style/button_rol"/>
 	</LinearLayout>
 
 </LinearLayout>

@@ -6,9 +6,20 @@
     <color name="active_black">#000000</color>
     <color name="inactive_dark">#797878</color>
     
-    <color name="rol_button_background_inactive">#ff4444</color>
-    <color name="rol_button_background_gradient_top">#ff4444</color>
-    <color name="rol_button_background_gradient_bottom">#d82727</color>
-    <color name="rol_button_text_color">#ffffff</color>
-    <color name="rol_button_text_focus">#f98f8f</color>
+    <!-- Button Hold -->
+    <!-- Disable -->
+    <color name="button_hold_background_disable">#405503</color>
+    <color name="text_hold_color_disable">#597606</color>
+    <!-- Active or Default -->
+    <color name="button_hold_background_active">#99cc00</color>
+    <color name="text_hold_color_active">#597606</color>
+    <!-- Pressed -->
+    <color name="button_hold_background_pressed">#597606</color>
+    <color name="text_hold_color_pressed">#99cc00</color>   
+    
+    <color name="button_rol_background_inactive">#ff4444</color>
+    <color name="button_rol_background_gradient_top">#ff4444</color>
+    <color name="button_rol_background_gradient_bottom">#d82727</color>
+    <color name="button_rol_text_color">#ffffff</color>
+    <color name="button_rol_text_focus">#f98f8f</color>
 </resources>
