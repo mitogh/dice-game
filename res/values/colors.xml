@@ -5,6 +5,8 @@
     <color name="text_light_blue">#e2f4fb</color>
     <color name="active_black">#000000</color>
     <color name="inactive_dark">#797878</color>
+    <color name="text_gray">#909090</color>
+    <color name="text_white">#FFFFFF</color>
     
     <!-- Button Hold -->
     <!-- Disable -->

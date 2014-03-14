@@ -71,7 +71,7 @@
 	        android:background="@null"
 	        android:inputType="textPersonName"
 	        android:textSize="50sp"
-	        android:textAlignment="center"
+	        android:textColor="@color/text_white"
 	        android:gravity="center"
 	        android:text="@string/player1_name" >
 	    </EditText>
@@ -83,6 +83,7 @@
 	        android:background="@null"
 	        android:inputType="textPersonName"
 	        android:textSize="50sp"
+	        android:textColor="@color/text_gray"
 	        android:gravity="center"
 	        android:text="@string/player2_name" >
 	    </EditText>
