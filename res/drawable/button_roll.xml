@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
-	
+	<!-- Pressed -->
 	<item android:state_pressed="true" >
-         <shape android:shape="rectangle"  >
-             <corners android:radius="10dp" />
-             <stroke android:width="1dip" android:color="#343333" />
+		<shape android:shape="rectangle"  >
+			<corners android:radius="10dp" />
+			<stroke 
+			    android:width="1dip" 
+			    android:color="#343333" />
 			<solid	android:color="@color/button_roll_background_pressed"/>            
-         </shape>
-     </item>
-
-	<item
-	    >
+		</shape>
+	</item>
+	
+	<!-- Default -->
+	<item>
 		<shape android:shape="rectangle"  >
 			<corners 
 			    android:radius="10dp" />
