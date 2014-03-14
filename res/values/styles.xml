@@ -27,6 +27,7 @@
 		<item name="android:gravity">left</item>
 		<item name="android:background">@drawable/button_hold</item>
 		<item name="android:textColor">@color/button_hold</item>
+		<item name="android:layout_alignParentLeft">true</item>
     </style>
     
     
@@ -37,9 +38,9 @@
 		<item name="android:paddingLeft">@dimen/buttons_padding_left</item>
 		<item name="android:paddingRight">@dimen/buttons_padding_left</item>
 		<item name="android:textStyle">bold</item>
-		<item name="android:gravity">right</item>
 		<item name="android:background">@drawable/button_roll</item>
 		<item name="android:textColor">@color/button_roll</item>
+		<item name="android:layout_alignParentRight">true</item>
     </style>
 
 </resources>

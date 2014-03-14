@@ -56,7 +56,7 @@
         android:gravity="center"/>
     
     
-    <LinearLayout 
+    <RelativeLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -72,8 +72,8 @@
 	        android:id="@+id/button_roll"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="@string/roll"	
+	        android:text="@string/roll"
 	        style="@style/button_roll"/>
-	</LinearLayout>
+	</RelativeLayout>
 
 </LinearLayout>
