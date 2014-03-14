@@ -49,7 +49,7 @@ public class DiceGame extends Activity {
         mRounds = (TextView) findViewById(R.id.round);
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
         mRounds.setTypeface(face);
-        mRounds.setText(getResources().getString(R.id.round) + " " + round);
+        mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
         
         mPlayer1 = (EditText) findViewById(R.id.editText_player1_name);
         mPlayer2 = (EditText) findViewById(R.id.editText_player2_name);
@@ -174,7 +174,7 @@ public class DiceGame extends Activity {
     private void updateRound(){
     	if(mCurrentPlayer == 1){
     		round++;
-    		mRounds.setText(getResources().getString(R.id.round) + " " + round);
+            mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
     	}
     }
 
