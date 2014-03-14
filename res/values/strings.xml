@@ -6,6 +6,7 @@
     <string name="player1_name">Player 1</string>
     <string name="player2_name">Player 2</string>
     <string name="hold">HOLD</string>
+    <string name="round">ROUND</string>
     <string name="roll">ROLL</string>
     
     <string-array name="messages">

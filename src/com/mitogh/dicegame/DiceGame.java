@@ -5,7 +5,6 @@ import java.util.Random;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -42,17 +41,15 @@ public class DiceGame extends Activity {
 	private String[] mMessages = null;
 	private int total = 0;
 	private int round = 1;
-	private final String ROUND = "ROUND";
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dice_game);
-        
         mRounds = (TextView) findViewById(R.id.round);
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
         mRounds.setTypeface(face);
-        mRounds.setText(ROUND + " " + round);
+        mRounds.setText(getResources().getString(R.id.round) + " " + round);
         
         mPlayer1 = (EditText) findViewById(R.id.editText_player1_name);
         mPlayer2 = (EditText) findViewById(R.id.editText_player2_name);
@@ -165,18 +162,18 @@ public class DiceGame extends Activity {
     	updateRound();
     	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
     	if(mCurrentPlayer == 1){
-    		mPlayer1.setTextColor(getResources().getColor(R.color.text_white));
-    		mPlayer2.setTextColor(getResources().getColor(R.color.text_gray));
+    		mPlayer1.setTextColor(getResources().getColor(R.color.white));
+    		mPlayer2.setTextColor(getResources().getColor(R.color.gray));
     	}else{
-    		mPlayer2.setTextColor(getResources().getColor(R.color.text_white));
-    		mPlayer1.setTextColor(getResources().getColor(R.color.text_gray));
+    		mPlayer2.setTextColor(getResources().getColor(R.color.white));
+    		mPlayer1.setTextColor(getResources().getColor(R.color.gray));
     	}
     }
     
     private void updateRound(){
     	if(mCurrentPlayer == 1){
     		round++;
-    		mRounds.setText(ROUND + " " + round);
+    		mRounds.setText(getResources().getString(R.id.round) + " " + round);
     	}
     }
 
