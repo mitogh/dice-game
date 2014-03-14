@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class DiceGame extends Activity {
@@ -26,6 +27,9 @@ public class DiceGame extends Activity {
 	private TextView mPoints;
 	private Button mHold;
 	private Button mRol;
+	
+	private EditText mPlayer1;
+	private EditText mPlayer2;
 	
 	// Internal elements
 	private Random random = null;
@@ -50,16 +54,19 @@ public class DiceGame extends Activity {
         mRounds.setTypeface(face);
         mRounds.setText(ROUND + " " + round);
         
+        mPlayer1 = (EditText) findViewById(R.id.editText_player1_name);
+        mPlayer2 = (EditText) findViewById(R.id.editText_player2_name);
+        
         mMessages = getResources().getStringArray(R.array.messages);
         random = new Random();
         // Player 1 GUI
         mPlayersGUI[0] = (TextView) findViewById(R.id.player1);
         mPlayersGUI[0].setText("0");
-        players[0].setName("Player 1");
+        players[0].setName(mPlayer1.getText().toString());
         // Player 2 GUI
         mPlayersGUI[1] = (TextView) findViewById(R.id.player2);
         mPlayersGUI[1].setText("0");
-        players[1].setName("Player 2");
+        players[0].setName(mPlayer2.getText().toString());
         
         mPoints = (TextView) findViewById(R.id.points);
         
@@ -67,8 +74,6 @@ public class DiceGame extends Activity {
         mHold.setEnabled(false);
         
         mRol = (Button) findViewById(R.id.button_roll);
-        mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#CC0000"));
-        
         mRol.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -158,9 +163,14 @@ public class DiceGame extends Activity {
      */
     private void nextPlayer(){
     	updateRound();
-    	mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#000000"));
     	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
-    	mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#CC0000"));
+    	if(mCurrentPlayer == 1){
+    		mPlayer1.setTextColor(getResources().getColor(R.color.text_white));
+    		mPlayer2.setTextColor(getResources().getColor(R.color.text_gray));
+    	}else{
+    		mPlayer2.setTextColor(getResources().getColor(R.color.text_white));
+    		mPlayer1.setTextColor(getResources().getColor(R.color.text_gray));
+    	}
     }
     
     private void updateRound(){
