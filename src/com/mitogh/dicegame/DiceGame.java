@@ -62,7 +62,7 @@ public class DiceGame extends Activity {
         
         mPoints = (TextView) findViewById(R.id.points);
         
-        mHold = (Button) findViewById(R.id.hold_button);
+        mHold = (Button) findViewById(R.id.button_hold);
         mHold.setEnabled(false);
         
         mRol = (Button) findViewById(R.id.button_roll);

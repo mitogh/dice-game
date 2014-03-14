@@ -18,9 +18,10 @@
     <color name="text_hold_color_pressed">#99cc00</color>   
     
     <!-- Button Roll -->
-    <color name="button_roll_background_inactive">#ff4444</color>
-    <color name="button_roll_background_gradient_top">#ff4444</color>
-    <color name="button_roll_background_gradient_bottom">#d82727</color>
-    <color name="button_roll_text_color">#ffffff</color>
-    <color name="button_roll_text_focus">#f98f8f</color>
+    <!-- Active or Default -->
+    <color name="button_roll_background_active">#ff4444</color>
+    <color name="text_roll_color_active">#ffffff</color>
+    <!-- Pressed -->
+    <color name="button_roll_background_pressed">#cc0000</color>
+    <color name="text_roll_color_pressed">#f97474</color>
 </resources>
