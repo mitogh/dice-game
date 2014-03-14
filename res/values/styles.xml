@@ -30,7 +30,7 @@
     </style>
     
     
-    <style name="button_rol" parent="@android:style/Widget.Button">
+    <style name="button_roll" parent="@android:style/Widget.Button">
 		<item name="android:textSize">@dimen/buttons_font_size</item>
 		<item name="android:paddingTop">@dimen/buttons_padding_top</item>
 		<item name="android:paddingBottom">@dimen/buttons_padding_top</item>
@@ -38,8 +38,8 @@
 		<item name="android:paddingRight">@dimen/buttons_padding_left</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:gravity">right</item>
-		<item name="android:background">@drawable/button_rol</item>
-		<item name="android:textColor">@color/button_rol</item>
+		<item name="android:background">@drawable/button_roll</item>
+		<item name="android:textColor">@color/button_roll</item>
     </style>
 
 </resources>

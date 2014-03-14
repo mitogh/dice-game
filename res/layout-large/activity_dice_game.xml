@@ -69,11 +69,11 @@
 	        style="@style/button_hold"/>
 	
 		<Button 
-	        android:id="@+id/rol_button"
+	        android:id="@+id/button_roll"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="@string/rol"	
-	        style="@style/button_rol"/>
+	        android:text="@string/roll"	
+	        style="@style/button_roll"/>
 	</LinearLayout>
 
 </LinearLayout>

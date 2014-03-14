@@ -17,9 +17,10 @@
     <color name="button_hold_background_pressed">#597606</color>
     <color name="text_hold_color_pressed">#99cc00</color>   
     
-    <color name="button_rol_background_inactive">#ff4444</color>
-    <color name="button_rol_background_gradient_top">#ff4444</color>
-    <color name="button_rol_background_gradient_bottom">#d82727</color>
-    <color name="button_rol_text_color">#ffffff</color>
-    <color name="button_rol_text_focus">#f98f8f</color>
+    <!-- Button Roll -->
+    <color name="button_roll_background_inactive">#ff4444</color>
+    <color name="button_roll_background_gradient_top">#ff4444</color>
+    <color name="button_roll_background_gradient_bottom">#d82727</color>
+    <color name="button_roll_text_color">#ffffff</color>
+    <color name="button_roll_text_focus">#f98f8f</color>
 </resources>

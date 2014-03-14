@@ -65,7 +65,7 @@ public class DiceGame extends Activity {
         mHold = (Button) findViewById(R.id.hold_button);
         mHold.setEnabled(false);
         
-        mRol = (Button) findViewById(R.id.rol_button);
+        mRol = (Button) findViewById(R.id.button_roll);
         mPlayersGUI[mCurrentPlayer].setTextColor(Color.parseColor("#CC0000"));
         
         mRol.setOnClickListener(new View.OnClickListener() {
