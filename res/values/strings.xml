@@ -9,7 +9,8 @@
     <string name="round">ROUND</string>
     <string name="roll">ROLL</string>
     
-    <string-array name="messages">
+    <!-- Messages for the number one -->
+    <string-array name="messages_one">
         <item>Sorry but you get the 1, next player turn</item>
         <item>You get a 2 what are you going to do?</item>
         <item>So, a 3? it\'s half bad and half good isn\'t</item>

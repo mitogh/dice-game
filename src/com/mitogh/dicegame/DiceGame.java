@@ -54,7 +54,7 @@ public class DiceGame extends Activity {
         mPlayer1 = (EditText) findViewById(R.id.editText_player1_name);
         mPlayer2 = (EditText) findViewById(R.id.editText_player2_name);
         
-        mMessages = getResources().getStringArray(R.array.messages);
+        mMessages = getResources().getStringArray(R.array.messages_one);
         random = new Random();
         // Player 1 GUI
         mPlayersGUI[0] = (TextView) findViewById(R.id.player1);
@@ -77,9 +77,10 @@ public class DiceGame extends Activity {
 			public void onClick(View v) {
 				// Random number from 1 to 6;
 				number = random.nextInt(6) + 1;
-				playSound();
+				playRollSound();
 				if(number == 1){
 					total = 0;
+					playPigSound();
 					updateScore();
 					gameFlow();
 				}else{
@@ -177,7 +178,19 @@ public class DiceGame extends Activity {
     	}
     }
 
-    private void playSound(){
+    private void playPigSound(){
+    	MediaPlayer player = MediaPlayer.create(this, R.raw.pig);
+    	player.start();
+    	player.setOnCompletionListener(new OnCompletionListener() {
+			
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				mp.release();
+			}
+		});
+    }
+    
+    private void playRollSound(){
     	MediaPlayer player = MediaPlayer.create(this, R.raw.rol_dice);
     	player.start();
     	player.setOnCompletionListener(new OnCompletionListener() {
