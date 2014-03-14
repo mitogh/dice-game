@@ -47,14 +47,17 @@ public class DiceGame extends Activity {
         setContentView(R.layout.activity_dice_game);
         message = new Message(this);
         mRounds = (TextView) findViewById(R.id.round);
+        Typeface playball = Typeface.createFromAsset(getAssets(), "fonts/playball.ttf");
         mEncouragementMessage = (TextView) findViewById(R.id.encouragement_message);
         
-        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
-        mRounds.setTypeface(face);
+        Typeface roboto_black = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
+        mRounds.setTypeface(roboto_black);
         mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
         
         mPlayer1 = (EditText) findViewById(R.id.editText_player1_name);
+        mPlayer1.setTypeface(playball);
         mPlayer2 = (EditText) findViewById(R.id.editText_player2_name);
+        mPlayer2.setTypeface(playball);
         
         random = new Random();
         // Player 1 GUI
