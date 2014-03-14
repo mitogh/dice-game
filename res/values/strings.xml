@@ -9,13 +9,46 @@
     <string name="round">ROUND</string>
     <string name="roll">ROLL</string>
     
-    <!-- Messages for the number one -->
+    <!-- Messages for the different numbers -->
     <string-array name="messages_one">
-        <item>Sorry but you get the 1, next player turn</item>
-        <item>You get a 2 what are you going to do?</item>
-        <item>So, a 3? it\'s half bad and half good isn\'t</item>
-        <item>So, how about a 4 in your count</item>
-        <item>Well, well a 5 it\'s not every day</item>
-        <item>I\'m sure you are going to keep the 6 in your count</item>
+		<item>Sorry but it\'s not your lucky day</item>
+		<item>Well, maybe next time.</item>
+		<item>Sometimes it is just destiny, isn\'t? </item>
+		<item>You need to be a little bit patient!, you have 5 more numbers waiting for you</item>
+		<item>Relax it\'s just a game.</item>
+		<item>tKeep trying, you\'re a winner (who say that?)</item>
     </string-array>
+    
+    <string-array name="messages_two">
+		<item>Well no so bad, give it another try.</item>
+		<item>The 2 is better than the 1, isn\'t?</item>
+		<item>I\'ve seen worse, so keep trying</item>
+		<item>Don\'t give up and roll it again.</item>
+		<item>The 2 add some points, so don\'t miss them.</item>
+		<item>Would you like to have a 1? Right? You see my point!</item>
+    </string-array>
+
+    <string-array name="messages_three">
+    	<item>The half, so the question is: roll or hold?</item>
+		<item>wow, that 3 is amazing many will pray for it</item>
+		<item>You know you have half bad and good lucky </item>
+		<item>The 3 is much better than 2 and of curse than 1</item>
+		<item>Keep in that line and pray for the magical 6</item>
+		<item>So, it seems like you are a lucky person</item>
+	</string-array>
+
+    <string-array name="messages_four">
+		<item>Awesome does not appear every day.</item>
+		<item>Well you are a lucky man certainly</item>
+		<item>¡OMG! That is really impressive</item>
+		<item>And without a clover!</item>        
+	</string-array>
+
+	<string-array name="messages_five">
+	    <item>Give me those fives</item>
+	</string-array>
+
+	<string-array name="messages_six">
+	    <item>Did you buy some kind of amulet?</item>
+	</string-array>
 </resources>

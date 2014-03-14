@@ -3,8 +3,6 @@ package com.mitogh.dicegame;
 import java.util.Random;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -24,6 +22,7 @@ public class DiceGame extends Activity {
 	};
 	private TextView mRounds;
 	private TextView mPoints;
+	private TextView mEncouragementMessage;
 	private Button mHold;
 	private Button mRol;
 	
@@ -38,15 +37,18 @@ public class DiceGame extends Activity {
 			new Player() 
 	};
 	private int mCurrentPlayer = 0;
-	private String[] mMessages = null;
 	private int total = 0;
 	private int round = 1;
+	private Message message;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dice_game);
+        message = new Message(this);
         mRounds = (TextView) findViewById(R.id.round);
+        mEncouragementMessage = (TextView) findViewById(R.id.encouragement_message);
+        
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
         mRounds.setTypeface(face);
         mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
@@ -54,7 +56,6 @@ public class DiceGame extends Activity {
         mPlayer1 = (EditText) findViewById(R.id.editText_player1_name);
         mPlayer2 = (EditText) findViewById(R.id.editText_player2_name);
         
-        mMessages = getResources().getStringArray(R.array.messages_one);
         random = new Random();
         // Player 1 GUI
         mPlayersGUI[0] = (TextView) findViewById(R.id.player1);
@@ -77,6 +78,7 @@ public class DiceGame extends Activity {
 			public void onClick(View v) {
 				// Random number from 1 to 6;
 				number = random.nextInt(6) + 1;
+				message.setNumber(number);
 				playRollSound();
 				if(number == 1){
 					total = 0;
@@ -88,15 +90,7 @@ public class DiceGame extends Activity {
 					mPoints.setText("Total = " + total);
 					mHold.setEnabled(true);
 				}
-				AlertDialog.Builder builder = new AlertDialog.Builder(DiceGame.this);
-				builder.setMessage(mMessages[number - 1])
-					.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-						}
-					});
-				builder.create();
-				builder.show();
+				mEncouragementMessage.setText(message.getMessage());
 			}
 		});
         
@@ -194,7 +188,6 @@ public class DiceGame extends Activity {
     	MediaPlayer player = MediaPlayer.create(this, R.raw.rol_dice);
     	player.start();
     	player.setOnCompletionListener(new OnCompletionListener() {
-			
 			@Override
 			public void onCompletion(MediaPlayer mp) {
 				mp.release();

@@ -90,6 +90,12 @@
 	        android:text="@string/player2_name" >
 	    </EditText>
 	</LinearLayout>
+	
+    <TextView
+        android:id="@+id/encouragement_message" 
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        />
     
 	<!-- Buttons Bar -->
     <TextView 
