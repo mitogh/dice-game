@@ -46,9 +46,19 @@
 
 	<string-array name="messages_five">
 	    <item>Give me those fives</item>
+		<item>So close to be perfect</item>
+		<item>I like the five, don\'t you?</item>
+		<item>So good, so far</item>
+		<item>I\'m impressed you have the luck from your side</item>
+		<item>No much to say you\'re the best!</item>	    
 	</string-array>
 
 	<string-array name="messages_six">
 	    <item>Did you buy some kind of amulet?</item>
+		<item>Oh! That never happen to me.</item>
+		<item>The party  just have begin.</item>
+		<item>What a great roll</item>
+		<item>That is how you roll the dice</item>
+		<item>Don\'t stop, let\'s go for more</item>
 	</string-array>
 </resources>

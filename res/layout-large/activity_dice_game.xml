@@ -95,6 +95,11 @@
         android:id="@+id/encouragement_message" 
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:textColor="@color/light_yellow"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="30sp"
+        android:gravity="center"
         />
     
 	<!-- Buttons Bar -->
