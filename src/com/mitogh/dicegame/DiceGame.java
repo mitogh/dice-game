@@ -5,6 +5,7 @@ import java.util.Random;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -169,8 +170,15 @@ public class DiceGame extends Activity {
      * with the latest score.
      */
     private void updateScore(){
-    	players[mCurrentPlayer].setScore(total);
-    	mPlayersGUI[mCurrentPlayer].setText("" + players[mCurrentPlayer].getScore());
+    	int number = 0; 
+    	if(mCurrentPlayer == 1){
+    		number = 0; 
+    	}else{
+    		number = 1;
+    	}
+    	
+    	players[number].setScore(total);
+    	mPlayersGUI[number].setText("" + players[number].getScore());
     }
     
     /**
