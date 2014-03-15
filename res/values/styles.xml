@@ -17,7 +17,15 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-        <style name="button_hold" parent="@android:style/Widget.Button">
+	<style name="players">
+		<item name="android:gravity">center</item>
+		<item name="android:background">@null</item>
+		<item name="android:inputType">textPersonName</item>
+		<item name="android:textSize">60sp</item>
+		<item name="android:maxLength">10</item>
+	</style>
+	
+	<style name="button_hold" parent="@android:style/Widget.Button">
 		<item name="android:textSize">@dimen/buttons_font_size</item>
 		<item name="android:paddingTop">@dimen/buttons_padding_top</item>
 		<item name="android:paddingBottom">@dimen/buttons_padding_top</item>

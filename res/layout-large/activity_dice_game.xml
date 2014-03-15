@@ -123,48 +123,41 @@
 	        android:layout_width="0dp"
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
-	        android:background="@null"
-	        android:inputType="textPersonName"
-	        android:textSize="60sp"
-	        android:maxLength="10"
 	        android:textColor="@color/white"
-	        android:gravity="center"
-	        android:text="@string/player1_name" >
+	        android:text="@string/player1_name" 
+	        style="@style/players">
 	    </EditText>
 		<EditText
 	        android:id="@+id/editText_player2_name"
 	        android:layout_width="0dp"
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
-	        android:background="@null"
-	        android:inputType="textPersonName"
-	        android:textSize="60sp"
-	        android:maxLength="10"
 	        android:textColor="@color/gray"
-	        android:gravity="center"
-	        android:text="@string/player2_name" >
+	        android:text="@string/player2_name"
+	        style="@style/players" >
 	    </EditText>
 	</LinearLayout>
 	
+    <!-- Message -->
     <TextView
         android:id="@+id/encouragement_message" 
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:textColor="@color/light_yellow"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="30sp"
+        android:paddingLeft="@dimen/padding_bar"
+        android:paddingRight="@dimen/padding_bar"
+        android:textSize="@dimen/encouragement_message_font_size"
         android:gravity="center"
         />
     
-	<!-- Buttons Bar -->
     <TextView 
         android:id="@+id/points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:gravity="center"/>
-
+    
+	<!-- Buttons Bar -->
     <RelativeLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -176,7 +169,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/hold"
-	        android:layout_marginLeft="30dp"
+	        android:layout_marginLeft="@dimen/margin_big_buttons"
 	        style="@style/button_hold"/>
 	
 		<Button 
@@ -184,8 +177,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/roll"
-	        android:layout_marginRight="30dp"
+	        android:layout_marginRight="@dimen/margin_big_buttons"
 	        style="@style/button_roll"/>
 	</RelativeLayout>
-
 </LinearLayout>

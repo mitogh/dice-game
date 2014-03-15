@@ -47,42 +47,52 @@ public class DiceGame extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dice_game);
-        message = new Message(this);
-        mRounds = (TextView) findViewById(R.id.round);
-        Typeface playball = Typeface.createFromAsset(getAssets(), "fonts/playball.ttf");
-        mEncouragementMessage = (TextView) findViewById(R.id.encouragement_message);
         
-        Typeface roboto_black = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
-        mRounds.setTypeface(roboto_black);
-        mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
+        // Search for each ID
         
+        // Layouts
+        mPlayerActive = (LinearLayout) findViewById(R.id.first);
+        mPlayerInactive = (LinearLayout) findViewById(R.id.second);        
+        // EditText
         mPlayer1 = (EditText) findViewById(R.id.editText_player1_name);
-        mPlayer1.setTypeface(playball);
         mPlayer2 = (EditText) findViewById(R.id.editText_player2_name);
+        // TextView
+        mRounds = (TextView) findViewById(R.id.round);
+        mPlayersGUI[0] = (TextView) findViewById(R.id.player1);
+        mPlayersGUI[1] = (TextView) findViewById(R.id.player2);
+        mPoints = (TextView) findViewById(R.id.points);
+        mEncouragementMessage = (TextView) findViewById(R.id.encouragement_message);
+        // Buttons
+        mHold = (Button) findViewById(R.id.button_hold);
+        mRol = (Button) findViewById(R.id.button_roll);
+        
+        // Typeface
+        Typeface playball = Typeface.createFromAsset(getAssets(), "fonts/playball.ttf");
+        Typeface roboto_black = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
+        Typeface roboto_bold = Typeface.createFromAsset(getAssets(), "fonts/roboto_bold.ttf");
+        
+        mRounds.setTypeface(roboto_bold);
+        mPlayer1.setTypeface(playball);
         mPlayer2.setTypeface(playball);
         
-        mPlayerActive = (LinearLayout) findViewById(R.id.first);
-        mPlayerInactive = (LinearLayout) findViewById(R.id.second);
-        updatePlayerColor();
+        mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
+        updatePlayersColor();
         
         random = new Random();
-        // Player 1 GUI
-        mPlayersGUI[0] = (TextView) findViewById(R.id.player1);
+        
         mPlayersGUI[0].setText("0");
+        mPlayersGUI[0].setTypeface(roboto_black);
         players[0].setName(mPlayer1.getText().toString());
-        // Player 2 GUI
-        mPlayersGUI[1] = (TextView) findViewById(R.id.player2);
+        mPlayersGUI[0].setTextColor(getResources().getColor(R.color.black));
+        
         mPlayersGUI[1].setText("0");
+        mPlayersGUI[1].setTypeface(roboto_black);
+        mPlayersGUI[1].setTextColor(getResources().getColor(R.color.light_dark));
+        
         players[0].setName(mPlayer2.getText().toString());
-        
-        mPoints = (TextView) findViewById(R.id.points);
-        
-        mHold = (Button) findViewById(R.id.button_hold);
         mHold.setEnabled(false);
-        
-        mRol = (Button) findViewById(R.id.button_roll);
         mSounds = new Sounds(this);
-        
+        message = new Message(this);
         mRol.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -101,7 +111,7 @@ public class DiceGame extends Activity {
 					gameFlow();
 				}else{
 					total += number;
-					mPoints.setText("Total = " + total);
+					mPoints.setText("" + total);
 					mHold.setEnabled(true);
 				}
 				mEncouragementMessage.setText(message.getMessage());
@@ -170,19 +180,27 @@ public class DiceGame extends Activity {
     private void nextPlayer(){
     	updateRound();
     	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
-    	updatePlayerColor();
+    	updatePlayersColor();
     }
     
-    private void updatePlayerColor(){
+    private void updatePlayersColor(){
     	if(mCurrentPlayer == 1){
     		mPlayer1.setTextColor(getResources().getColor(R.color.white));
     		mPlayer2.setTextColor(getResources().getColor(R.color.gray));
-            mPlayerActive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_left_active));
+            
+    		mPlayersGUI[0].setTextColor(getResources().getColor(R.color.black));
+    		mPlayersGUI[1].setTextColor(getResources().getColor(R.color.light_dark));
+    		
+    		mPlayerActive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_left_active));
             mPlayerInactive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_right_inactive));
     	}else{
     		mPlayer2.setTextColor(getResources().getColor(R.color.white));
     		mPlayer1.setTextColor(getResources().getColor(R.color.gray));
-            mPlayerActive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_left_inactive));
+    		
+    		mPlayersGUI[0].setTextColor(getResources().getColor(R.color.light_dark));
+    		mPlayersGUI[1].setTextColor(getResources().getColor(R.color.black));
+    		
+    		mPlayerActive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_left_inactive));
             mPlayerInactive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_right_active));
     	}
     }
