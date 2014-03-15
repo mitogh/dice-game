@@ -4,11 +4,13 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,10 +29,10 @@ public class DiceGame extends Activity {
 	private TextView mPointsLabelPlayer2;
 	private TextView mEncouragementMessage;
 	private Button mHold;
-	private Button mRol;
-	
+	private Button mRoll;
 	private EditText mPlayer1;
 	private EditText mPlayer2;
+	private ImageView mDice;
 	
 	// Internal elements
 	private Random random = null;
@@ -68,8 +70,9 @@ public class DiceGame extends Activity {
         mEncouragementMessage = (TextView) findViewById(R.id.encouragement_message);
         // Buttons
         mHold = (Button) findViewById(R.id.button_hold);
-        mRol = (Button) findViewById(R.id.button_roll);
+        mRoll = (Button) findViewById(R.id.button_roll);
         
+        mDice =  (ImageView) findViewById(R.id.animation); 
         // Typeface
         Typeface playball = Typeface.createFromAsset(getAssets(), "fonts/playball.ttf");
         Typeface roboto_black = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
@@ -102,16 +105,18 @@ public class DiceGame extends Activity {
         mHold.setEnabled(false);
         mSounds = new Sounds(this);
         message = new Message(this);
-        mRol.setOnClickListener(new View.OnClickListener() {
+        
+        mRoll.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
+				
 				// Random number from 1 to 6;
 				number = random.nextInt(6) + 1;
 				message.setNumber(number);
 				mSounds.rollSound();
 				mSounds.play();
-				
+				animateDice();
 				if(number == 1){
 					total = 0;
 					mSounds.pigSound();
@@ -147,36 +152,33 @@ public class DiceGame extends Activity {
         return true;
     }
     
-    /**
-     * Check if there is a winner player
-     * @return	boolean		Returns true if the current player wins the game 
-     * 						false if not.
-     */
     private boolean thereIsWinner(){
     	return players[mCurrentPlayer].isWinner(); 
     }
     
-    /**
-     * Reset the values for the next player, score and total of points
-     */
+
     private void gameFlow(){
     	nextPlayer();
     	total = 0;
     	// Disable hold button
     	mHold.setEnabled(false);
     }
-    /**
-     *	Update the message of the GUI with the name of the new winner of the Game. 
-     */
+
     private void updateWinnerMessage(){
     	total = 0; 
     	mPoints.setText(players[mCurrentPlayer].getName() + " is the winner!");
     }
     
-    /**
-     * Updates the current player score at the board
-     * with the latest score.
-     */
+    
+    private void animateDice(){
+    	mDice.setBackgroundResource(R.drawable.dice_animation);
+        AnimationDrawable diceAnimation = (AnimationDrawable) mDice.getBackground();    	
+    	if(diceAnimation.isRunning()){
+    		diceAnimation.stop();
+    	}
+    	diceAnimation.start();
+    }
+    
     private void updateScore(){
     	int number = 0; 
     	if(mCurrentPlayer == 1){
@@ -189,10 +191,6 @@ public class DiceGame extends Activity {
     	mPlayersGUI[number].setText("" + players[number].getScore());
     }
     
-    /**
-     * This function allows to change to the next player in the players
-     * array, when reaches the last player restart to the first player.
-     */
     private void nextPlayer(){
     	updateRound();
     	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
