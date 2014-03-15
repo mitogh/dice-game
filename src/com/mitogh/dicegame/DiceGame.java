@@ -5,7 +5,6 @@ import java.util.Random;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +23,8 @@ public class DiceGame extends Activity {
 	private LinearLayout mPlayerInactive;
 	private TextView mRounds;
 	private TextView mPoints;
+	private TextView mPointsLabelPlayer1;
+	private TextView mPointsLabelPlayer2;
 	private TextView mEncouragementMessage;
 	private Button mHold;
 	private Button mRol;
@@ -62,6 +63,8 @@ public class DiceGame extends Activity {
         mPlayersGUI[0] = (TextView) findViewById(R.id.player1);
         mPlayersGUI[1] = (TextView) findViewById(R.id.player2);
         mPoints = (TextView) findViewById(R.id.points);
+        mPointsLabelPlayer1 = (TextView) findViewById(R.id.player1_points_label);
+        mPointsLabelPlayer2 = (TextView) findViewById(R.id.player2_points_label);
         mEncouragementMessage = (TextView) findViewById(R.id.encouragement_message);
         // Buttons
         mHold = (Button) findViewById(R.id.button_hold);
@@ -83,12 +86,17 @@ public class DiceGame extends Activity {
         
         mPlayersGUI[0].setText("0");
         mPlayersGUI[0].setTypeface(roboto_black);
+        mPointsLabelPlayer1.setTypeface(roboto_black);
+        mPointsLabelPlayer2.setTypeface(roboto_black);
+        
         players[0].setName(mPlayer1.getText().toString());
         mPlayersGUI[0].setTextColor(getResources().getColor(R.color.black));
+        mPointsLabelPlayer1.setTextColor(getResources().getColor(R.color.black));
         
         mPlayersGUI[1].setText("0");
         mPlayersGUI[1].setTypeface(roboto_black);
         mPlayersGUI[1].setTextColor(getResources().getColor(R.color.light_dark));
+        mPointsLabelPlayer2.setTextColor(getResources().getColor(R.color.light_dark));
         
         players[0].setName(mPlayer2.getText().toString());
         mHold.setEnabled(false);
@@ -199,6 +207,9 @@ public class DiceGame extends Activity {
     		mPlayersGUI[0].setTextColor(getResources().getColor(R.color.black));
     		mPlayersGUI[1].setTextColor(getResources().getColor(R.color.light_dark));
     		
+    		mPointsLabelPlayer1.setTextColor(getResources().getColor(R.color.black));
+    		mPointsLabelPlayer2.setTextColor(getResources().getColor(R.color.light_dark));
+    		
     		mPlayerActive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_left_active));
             mPlayerInactive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_right_inactive));
     	}else{
@@ -207,6 +218,9 @@ public class DiceGame extends Activity {
     		
     		mPlayersGUI[0].setTextColor(getResources().getColor(R.color.light_dark));
     		mPlayersGUI[1].setTextColor(getResources().getColor(R.color.black));
+    		
+    		mPointsLabelPlayer2.setTextColor(getResources().getColor(R.color.black));
+    		mPointsLabelPlayer1.setTextColor(getResources().getColor(R.color.light_dark));
     		
     		mPlayerActive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_left_inactive));
             mPlayerInactive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_right_active));
