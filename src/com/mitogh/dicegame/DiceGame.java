@@ -4,8 +4,6 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -43,6 +41,7 @@ public class DiceGame extends Activity {
 	private int total = 0;
 	private int round = 1;
 	private Message message;
+	private Sounds mSounds;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +81,8 @@ public class DiceGame extends Activity {
         mHold.setEnabled(false);
         
         mRol = (Button) findViewById(R.id.button_roll);
+        mSounds = new Sounds(this);
+        
         mRol.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -89,10 +90,13 @@ public class DiceGame extends Activity {
 				// Random number from 1 to 6;
 				number = random.nextInt(6) + 1;
 				message.setNumber(number);
-				playRollSound();
+				mSounds.rollSound();
+				mSounds.play();
+				
 				if(number == 1){
 					total = 0;
-					playPigSound();
+					mSounds.pigSound();
+					mSounds.play();
 					updateScore();
 					gameFlow();
 				}else{
@@ -188,28 +192,5 @@ public class DiceGame extends Activity {
     		round++;
             mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
     	}
-    }
-
-    private void playPigSound(){
-    	MediaPlayer player = MediaPlayer.create(this, R.raw.pig);
-    	player.start();
-    	player.setOnCompletionListener(new OnCompletionListener() {
-			
-			@Override
-			public void onCompletion(MediaPlayer mp) {
-				mp.release();
-			}
-		});
-    }
-    
-    private void playRollSound(){
-    	MediaPlayer player = MediaPlayer.create(this, R.raw.rol_dice);
-    	player.start();
-    	player.setOnCompletionListener(new OnCompletionListener() {
-			@Override
-			public void onCompletion(MediaPlayer mp) {
-				mp.release();
-			}
-		});
     }
 }
