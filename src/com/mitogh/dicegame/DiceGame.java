@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class DiceGame extends Activity {
@@ -20,6 +21,8 @@ public class DiceGame extends Activity {
 			null,
 			null
 	};
+	private LinearLayout mPlayerActive;
+	private LinearLayout mPlayerInactive;
 	private TextView mRounds;
 	private TextView mPoints;
 	private TextView mEncouragementMessage;
@@ -36,7 +39,7 @@ public class DiceGame extends Activity {
 			new Player(),
 			new Player() 
 	};
-	private int mCurrentPlayer = 0;
+	private int mCurrentPlayer = 1;
 	private int total = 0;
 	private int round = 1;
 	private Message message;
@@ -58,6 +61,10 @@ public class DiceGame extends Activity {
         mPlayer1.setTypeface(playball);
         mPlayer2 = (EditText) findViewById(R.id.editText_player2_name);
         mPlayer2.setTypeface(playball);
+        
+        mPlayerActive = (LinearLayout) findViewById(R.id.first);
+        mPlayerInactive = (LinearLayout) findViewById(R.id.second);
+        updatePlayerColor();
         
         random = new Random();
         // Player 1 GUI
@@ -159,12 +166,20 @@ public class DiceGame extends Activity {
     private void nextPlayer(){
     	updateRound();
     	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
+    	updatePlayerColor();
+    }
+    
+    private void updatePlayerColor(){
     	if(mCurrentPlayer == 1){
     		mPlayer1.setTextColor(getResources().getColor(R.color.white));
     		mPlayer2.setTextColor(getResources().getColor(R.color.gray));
+            mPlayerActive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_left_active));
+            mPlayerInactive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_right_inactive));
     	}else{
     		mPlayer2.setTextColor(getResources().getColor(R.color.white));
     		mPlayer1.setTextColor(getResources().getColor(R.color.gray));
+            mPlayerActive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_left_inactive));
+            mPlayerInactive.setBackgroundDrawable(getResources().getDrawable(R.drawable.versus_background_right_active));
     	}
     }
     

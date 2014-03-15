@@ -8,6 +8,7 @@
     <string name="hold">HOLD</string>
     <string name="round">ROUND</string>
     <string name="roll">ROLL</string>
+    <string name="points">POINTS</string>
     
     <!-- Messages for the different numbers -->
     <string-array name="messages_one">
