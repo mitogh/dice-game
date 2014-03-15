@@ -116,11 +116,9 @@ public class DiceGame extends Activity {
 				message.setNumber(number);
 				mSounds.rollSound();
 				mSounds.play();
-				animateDice();
+				animateDice(number);
 				if(number == 1){
 					total = 0;
-					mSounds.pigSound();
-					mSounds.play();
 					updateScore();
 					gameFlow();
 				}else{
@@ -170,13 +168,38 @@ public class DiceGame extends Activity {
     }
     
     
-    private void animateDice(){
-    	mDice.setBackgroundResource(R.drawable.dice_animation);
+    private void animateDice(int number){
+    	boolean isPig = false;
+    	switch(number){
+    	case 1:    		
+    		isPig = true;
+    		mDice.setBackgroundResource(R.drawable.dice_animation_pig);
+    		break;
+    	case 2:
+    		mDice.setBackgroundResource(R.drawable.dice_animation_two);
+    		break;
+    	case 3:
+    		mDice.setBackgroundResource(R.drawable.dice_animation_three);
+    		break;
+    	case 4:
+    		mDice.setBackgroundResource(R.drawable.dice_animation_four);
+    		break;
+    	case 5:
+    		mDice.setBackgroundResource(R.drawable.dice_animation_five);
+    		break;
+    	case 6:
+    		mDice.setBackgroundResource(R.drawable.dice_animation_six);
+    		break;
+    	}
         AnimationDrawable diceAnimation = (AnimationDrawable) mDice.getBackground();    	
     	if(diceAnimation.isRunning()){
     		diceAnimation.stop();
     	}
     	diceAnimation.start();
+    	if(isPig){
+    		mSounds.pigSound();
+    		mSounds.play();
+    	}
     }
     
     private void updateScore(){
