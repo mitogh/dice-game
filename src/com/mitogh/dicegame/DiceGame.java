@@ -46,6 +46,8 @@ public class DiceGame extends Activity {
 	private int mCurrentPlayer = 1;
 	private int total = 0;
 	private int round = 1;
+	private Avatars avatarPlayer1;
+	private Avatars avatarPlayer2;
 	private Message message;
 	private Sounds mSounds;
 	private AlphaAnimation alphaAnimation;
@@ -131,6 +133,10 @@ public class DiceGame extends Activity {
     
     public void setUP(){        
     	setTypeFace();
+        avatarPlayer1 = new Avatars();
+        avatarPlayer1.newAvatar();
+        avatarPlayer2 = new Avatars();
+        avatarPlayer2.newAvatar();
     	updatePlayersColor();
     	mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
         
@@ -145,6 +151,7 @@ public class DiceGame extends Activity {
         message = new Message(this);
         alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
         alphaAnimation.setDuration(1000);
+
         
         random = new Random();
     }
@@ -153,8 +160,10 @@ public class DiceGame extends Activity {
         Typeface playball = Typeface.createFromAsset(getAssets(), "fonts/playball.ttf");
         Typeface roboto_black = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
         Typeface roboto_bold = Typeface.createFromAsset(getAssets(), "fonts/roboto_bold.ttf");
+        Typeface numbers = Typeface.createFromAsset(getAssets(), "fonts/pixel.ttf");
         
         mRounds.setTypeface(roboto_bold);
+        mPoints.setTypeface(numbers);
         mPlayer1Name.setTypeface(playball);
         mPlayer2Name.setTypeface(playball);
         
@@ -247,9 +256,8 @@ public class DiceGame extends Activity {
     		
     		mPlayerActive.setBackgroundResource(R.drawable.versus_background_left_active);
             mPlayerInactive.setBackgroundResource(R.drawable.versus_background_right_inactive);
-            
-            mAvatarPLayer1.setBackgroundResource(R.drawable.avatar1_active);
-            mAvatarPLayer2.setBackgroundResource(R.drawable.avatar2_inactive);
+            mAvatarPLayer1.setBackgroundResource(avatarPlayer1.getAvatarActive());
+            mAvatarPLayer2.setBackgroundResource(avatarPlayer2.getAvatarInactive());
     	}else{
     		mPlayer2Name.setTextColor(getResources().getColor(R.color.white));
     		mPlayer1Name.setTextColor(getResources().getColor(R.color.gray));
@@ -263,8 +271,8 @@ public class DiceGame extends Activity {
     		mPlayerActive.setBackgroundResource(R.drawable.versus_background_left_inactive);
             mPlayerInactive.setBackgroundResource(R.drawable.versus_background_right_active);
             
-            mAvatarPLayer1.setBackgroundResource(R.drawable.avatar1_inactive);
-            mAvatarPLayer2.setBackgroundResource(R.drawable.avatar2_active);
+            mAvatarPLayer1.setBackgroundResource(avatarPlayer1.getAvatarInactive());
+            mAvatarPLayer2.setBackgroundResource(avatarPlayer2.getAvatarActive());
     	}
     }
     

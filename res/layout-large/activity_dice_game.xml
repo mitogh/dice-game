@@ -161,9 +161,9 @@
         android:id="@+id/points"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/fourty"
+        android:textSize="120dp"
         android:gravity="center"
-        android:layout_marginTop="@dimen/twenty"
+        android:layout_marginTop="@dimen/fourty"
         android:layout_marginBottom="@dimen/twenty"
         style="@style/players"
         />
