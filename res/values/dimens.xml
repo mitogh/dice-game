@@ -4,15 +4,17 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 	
-    <dimen name="padding_bar">10dp</dimen>
-    <dimen name="margin_bar">10dp</dimen>
+    <!-- Different dimensions for margins and paddigs -->
+    <dimen name="zero">0dp</dimen>
+    <dimen name="five">5dp</dimen>
+    <dimen name="ten">10dp</dimen>
+    <dimen name="twenty">20dp</dimen>
+	<dimen name="thirty">30dp</dimen>
+	<dimen name="fourty">40dp</dimen>
+	
+    <!-- Font Sizes -->
     <dimen name="bar_font_size">42sp</dimen>
     <dimen name="encouragement_message_font_size">30sp</dimen>
-    <dimen name="margin_big_buttons">30dp</dimen>
-    
     <dimen name="points_font_size">80sp</dimen>
-    
     <dimen name="buttons_font_size">60sp</dimen>
-    <dimen name="buttons_padding_top">10dp</dimen>
-    <dimen name="buttons_padding_left">40dp</dimen>
 </resources>

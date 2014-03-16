@@ -1,15 +1,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
     </style>
 
     <!-- Application theme. -->
@@ -25,12 +16,20 @@
 		<item name="android:maxLength">10</item>
 	</style>
 	
+	<style name="message">
+        <item name="android:textColor">@color/light_yellow</item>
+        <item name="android:paddingLeft">@dimen/ten</item>
+        <item name="android:paddingRight">@dimen/ten</item>
+        <item name="android:textSize">@dimen/encouragement_message_font_size</item>
+        <item name="android:gravity">center</item>
+	</style>
+	
 	<style name="button_hold" parent="@android:style/Widget.Button">
 		<item name="android:textSize">@dimen/buttons_font_size</item>
-		<item name="android:paddingTop">@dimen/buttons_padding_top</item>
-		<item name="android:paddingBottom">@dimen/buttons_padding_top</item>
-		<item name="android:paddingLeft">@dimen/buttons_padding_left</item>
-		<item name="android:paddingRight">@dimen/buttons_padding_left</item>
+		<item name="android:paddingTop">@dimen/ten</item>
+		<item name="android:paddingBottom">@dimen/ten</item>
+		<item name="android:paddingLeft">@dimen/thirty</item>
+		<item name="android:paddingRight">@dimen/thirty</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:gravity">left</item>
 		<item name="android:background">@drawable/button_hold</item>
@@ -41,10 +40,10 @@
     
     <style name="button_roll" parent="@android:style/Widget.Button">
 		<item name="android:textSize">@dimen/buttons_font_size</item>
-		<item name="android:paddingTop">@dimen/buttons_padding_top</item>
-		<item name="android:paddingBottom">@dimen/buttons_padding_top</item>
-		<item name="android:paddingLeft">@dimen/buttons_padding_left</item>
-		<item name="android:paddingRight">@dimen/buttons_padding_left</item>
+		<item name="android:paddingTop">@dimen/ten</item>
+		<item name="android:paddingBottom">@dimen/ten</item>
+		<item name="android:paddingLeft">@dimen/thirty</item>
+		<item name="android:paddingRight">@dimen/thirty</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:background">@drawable/button_roll</item>
 		<item name="android:textColor">@color/button_roll</item>

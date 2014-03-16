@@ -9,6 +9,7 @@
     <string name="round">ROUND</string>
     <string name="roll">ROLL</string>
     <string name="points">POINTS</string>
+    <string name="description_animation">Dice animation with the different numbers and the pig, of curse!</string>
     
     <!-- Messages for the different numbers -->
     <string-array name="messages_one">
@@ -17,7 +18,7 @@
 		<item>Sometimes it is just destiny, isn\'t? </item>
 		<item>You need to be a little bit patient!, you have 5 more numbers waiting for you</item>
 		<item>Relax it\'s just a game.</item>
-		<item>tKeep trying, you\'re a winner (who say that?)</item>
+		<item>Keep trying, you\'re a winner</item>
     </string-array>
     
     <string-array name="messages_two">

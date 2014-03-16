@@ -8,6 +8,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -72,7 +73,7 @@ public class DiceGame extends Activity {
         mHold = (Button) findViewById(R.id.button_hold);
         mRoll = (Button) findViewById(R.id.button_roll);
         
-        mDice =  (ImageView) findViewById(R.id.animation); 
+        mDice =  (ImageView) findViewById(R.id.dice); 
         // Typeface
         Typeface playball = Typeface.createFromAsset(getAssets(), "fonts/playball.ttf");
         Typeface roboto_black = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
@@ -105,6 +106,8 @@ public class DiceGame extends Activity {
         mHold.setEnabled(false);
         mSounds = new Sounds(this);
         message = new Message(this);
+        final AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
+        alphaAnimation.setDuration(1000);
         
         mRoll.setOnClickListener(new View.OnClickListener() {
 			
@@ -117,9 +120,12 @@ public class DiceGame extends Activity {
 				mSounds.rollSound();
 				mSounds.play();
 				animateDice(number);
+				mPoints.startAnimation(alphaAnimation);
+				mEncouragementMessage.startAnimation(alphaAnimation);
 				if(number == 1){
 					total = 0;
 					updateScore();
+					mPoints.setText("0");
 					gameFlow();
 				}else{
 					total += number;
@@ -168,8 +174,9 @@ public class DiceGame extends Activity {
     }
     
     
-    private void animateDice(int number){
+    private void animateDice(int number){    
     	boolean isPig = false;
+    	    	
     	switch(number){
     	case 1:    		
     		isPig = true;

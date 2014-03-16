@@ -10,8 +10,8 @@
 	<LinearLayout
     	android:focusable="true" 
     	android:focusableInTouchMode="true"
-    	android:layout_width="0dp" 
-    	android:layout_height="0dp"/>
+    	android:layout_width="@dimen/zero" 
+    	android:layout_height="@dimen/zero"/>
 	
 	<!-- Top Bar  -->
 	<LinearLayout 
@@ -19,20 +19,19 @@
 	    android:layout_height="wrap_content"
 	    android:background="@color/light_blue"
 	    android:orientation="vertical"
-	    android:layout_marginBottom="@dimen/margin_bar">
+	    android:layout_marginBottom="@dimen/ten">
 		<TextView 
         	android:id="@+id/round"
         	android:layout_width="match_parent"
         	android:layout_height="wrap_content"
-        	android:paddingTop="@dimen/padding_bar"
-        	android:paddingBottom="@dimen/padding_bar"
+        	android:paddingTop="@dimen/ten"
+        	android:paddingBottom="@dimen/ten"
         	android:textSize="@dimen/bar_font_size"
         	android:textColor="@color/light_blue_and_white"
-        	android:gravity="center"
-        	/>
+        	android:gravity="center"	/>
 		<View 
 		    android:layout_width="match_parent"
-    		android:layout_height="5dp"
+    		android:layout_height="@dimen/five"
 			android:background="@color/dark_blue" />
 	</LinearLayout>
 	
@@ -42,10 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp">
+        android:layout_margin="@dimen/twenty">
 
 		<LinearLayout
 			android:id="@+id/first"
@@ -115,7 +111,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_marginBottom="@dimen/ten">
 		<EditText
 	        android:id="@+id/editText_player1_name"
 	        android:layout_width="0dp"
@@ -141,26 +139,27 @@
         android:id="@+id/encouragement_message" 
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:textColor="@color/light_yellow"
-        android:paddingLeft="@dimen/padding_bar"
-        android:paddingRight="@dimen/padding_bar"
-        android:textSize="@dimen/encouragement_message_font_size"
-        android:gravity="center"
-        />
-    
+        android:layout_margin="@dimen/twenty"
+        style="@style/message"  />
+	
+    <!-- Dice -->
 	<ImageView
-    	android:id="@+id/animation"
+    	android:id="@+id/dice"
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
-    	android:contentDescription="dice"
+    	android:layout_gravity="center"
+    	android:layout_margin="@dimen/twenty"
+    	android:contentDescription="@string/description_animation"
     />
 
     <TextView 
         android:id="@+id/points"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        style="@style/players"
+        />
     
 	<!-- Buttons Bar -->
     <RelativeLayout 
@@ -174,7 +173,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/hold"
-	        android:layout_marginLeft="@dimen/margin_big_buttons"
+	        android:layout_marginLeft="@dimen/thirty"
 	        style="@style/button_hold"/>
 	
 		<Button 
@@ -182,7 +181,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/roll"
-	        android:layout_marginRight="@dimen/margin_big_buttons"
+	        android:layout_marginRight="@dimen/thirty"
 	        style="@style/button_roll"/>
 	</RelativeLayout>
 </LinearLayout>
