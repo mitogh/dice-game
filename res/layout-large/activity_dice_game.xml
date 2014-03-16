@@ -49,12 +49,11 @@
 	        android:layout_height="wrap_content"
 	        android:orientation="horizontal"
 	        android:layout_weight="1">		
-			<Button 
-		        android:id="@+id/button_avatar1"
+			<ImageButton 
+		        android:id="@+id/avatar_player1"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:text="@string/roll"
-			    />
+		        android:text="@string/roll"	/>
 			<LinearLayout 
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
@@ -79,30 +78,36 @@
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:orientation="horizontal"
-			android:layout_weight="1">	
-			<LinearLayout 
-			    android:layout_width="match_parent"
+			android:layout_weight="1">
+	
+			<LinearLayout
+			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:orientation="vertical">
+			    android:orientation="vertical" >
+
 				<TextView 
 				    android:id="@+id/player2_points_label"
 				    android:layout_width="wrap_content"
+				    android:layout_marginLeft="@dimen/ten"
 				    android:textSize="30sp"
 					android:layout_height="wrap_content"
 					android:gravity="center"
 				    android:text="@string/points"/>
 			    <TextView 
 			        android:id="@+id/player2"
+			        android:layout_marginLeft="@dimen/ten"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="@dimen/points_font_size" />
 		    </LinearLayout>
-			<Button 
-		        android:id="@+id/button_avatar2"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/hold"
-		        	/>
+
+			<ImageButton
+			    android:id="@+id/avatar_player2"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+
+			    android:text="@string/roll" />
+
 		</LinearLayout>
 	</LinearLayout>
 	
