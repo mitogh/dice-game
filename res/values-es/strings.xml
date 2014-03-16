@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Pig Dice</string>
+    <string name="action_settings">Opciones</string>
+    <string name="player1_name">Jugador 1</string>
+    <string name="player2_name">Jugador 2</string>
+    <string name="hold">GUARDAR</string>
+    <string name="round">RONDA</string>
+    <string name="roll">LANZAR</string>
+    <string name="points">PUNTOS</string>
+    <string name="next_turn">Le toca al siguiente jugador</string>
+    <string name="have_winner">¡Tenemos un Ganador!</string>
+    <string name="new_game">¡Nuevo juego!</string>
+    <string name="congratulations">Muchas Felicidades:</string>
+    <string name="description_animation">Animacion del dado, con el cerdo por supuesot</string>
+    
+    
+    <!-- Messages for the different numbers -->
+    <string-array name="messages_one">
+		<item>Lo siento pero no es tu dia de suerte</item>
+		<item>Bueno, quza en otra ocasion</item>
+		<item>A veces es solo el destino </item>
+		<item>Necesitas ser un poco mas paciente, ¡Aun tienes otros 5 numeros!</item>
+		<item>Relajate es solo un juego.</item>
+		<item>Sigue intentando, tu eres un ganador</item>
+    </string-array>
+    
+    <string-array name="messages_two">
+		<item>Bueno no esta tan mal, puedes intentarlo otra vez</item>
+		<item>El 2 es mejor que el uno, ¿apoco no?</item>
+		<item>He visto peores, sigue intenando</item>
+		<item>No te rindas y sigue intentando.</item>
+		<item>Dos puntos mas, asi que no te los pierdas</item>
+		<item>¿Quieres tener un uno? ¡Me explico!</item>
+    </string-array>
+
+    <string-array name="messages_three">
+    	<item>La mitad, asi que la pregunta es: ¿tirar o guardar?</item>
+		<item>WOW, ese 3 es increible, muchos rezarian por el</item>
+		<item>Creo que tienes mitad de buena y mala suerte</item>
+		<item>El 3 es mucho mejor que el 2 y por supuesto que el 1</item>
+		<item>Sigue esa linea y ruega por el magico 6</item>
+		<item>Parece que eres una persona afortunada</item>
+	</string-array>
+
+    <string-array name="messages_four">
+		<item>Increible no sucede todos los dias.</item>
+		<item>Ciertamente eres una persona afortunada</item>
+		<item>Vaya realmente impresionante</item>
+		<item>¡Y sin un trebol!</item>        
+	</string-array>
+
+	<string-array name="messages_five">
+	    <item>Dame esos cinco</item>
+		<item>Tan cerca de ser perfecto</item>
+		<item>Me gustan esos cinco, ¿no crees?</item>
+		<item>Tan bien como hasta ahora</item>
+		<item>Estoy impresionado tienes la suerte de tu lado</item>
+		<item>No hay mucho que decir, ¡Eres el mejor!</item>	    
+	</string-array>
+
+	<string-array name="messages_six">
+	    <item>¿Compraste algun amuleto?</item>
+		<item>¡Oh! Eso nunca me sucedio.</item>
+		<item>La fiesta ha comenzado.</item>
+		<item>Que tirada tan genial</item>
+		<item>Asi es como se tira a los dados</item>
+		<item>No te detengas vamos por mas</item>
+	</string-array>
+</resources>
