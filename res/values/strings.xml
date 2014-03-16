@@ -9,7 +9,9 @@
     <string name="round">ROUND</string>
     <string name="roll">ROLL</string>
     <string name="points">POINTS</string>
+    <string name="next_turn">Next Player Turn</string>
     <string name="description_animation">Dice animation with the different numbers and the pig, of curse!</string>
+    
     
     <!-- Messages for the different numbers -->
     <string-array name="messages_one">

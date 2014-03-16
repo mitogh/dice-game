@@ -3,6 +3,8 @@ package com.mitogh.dicegame;
 import java.util.Random;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -131,6 +133,52 @@ public class DiceGame extends Activity {
         return true;
     }
     
+    private boolean thereIsWinner(){
+    	return players[mCurrentPlayer].isWinner(); 
+    }
+    
+    private void gameFlow(){
+    	total = 0;    	
+    	mHold.setEnabled(false);
+    	new AlertDialog.Builder(this)
+        .setTitle(getResources().getString(R.string.next_turn))
+        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) { 
+            	nextPlayer();
+            }
+         })
+        .setIcon(R.drawable.next)
+        .show();
+    }
+
+    private void updateWinnerMessage(){
+    	total = 0; 
+    	mPoints.setText(players[mCurrentPlayer].getName() + " is the winner!");
+    }
+    private void updateRound(){
+    	if(mCurrentPlayer == 1){
+    		round++;
+            mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
+    	}
+    }
+    
+    private void updateScore(){
+    	if(mCurrentPlayer == 1){ 
+    		players[0].setScore(total);
+    		mPlayer1Points.setText("" + players[0].getScore());
+    	}else{
+    		number = 1;
+    		players[1].setScore(total);
+    		mPlayer2Points.setText("" + players[1].getScore());
+    	}
+    }
+    
+    private void nextPlayer(){
+    	updateRound();
+    	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
+    	updatePlayersColor();
+    }
+    
     public void setUP(){        
     	setTypeFace();
         avatarPlayer1 = new Avatars();
@@ -151,8 +199,6 @@ public class DiceGame extends Activity {
         message = new Message(this);
         alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
         alphaAnimation.setDuration(1000);
-
-        
         random = new Random();
     }
     
@@ -173,23 +219,6 @@ public class DiceGame extends Activity {
         mPointsLabelPlayer1.setTypeface(roboto_black);
         mPointsLabelPlayer2.setTypeface(roboto_black);
     }
-    
-    private boolean thereIsWinner(){
-    	return players[mCurrentPlayer].isWinner(); 
-    }
-    
-    private void gameFlow(){
-    	nextPlayer();
-    	total = 0;
-    	// Disable hold button
-    	mHold.setEnabled(false);
-    }
-
-    private void updateWinnerMessage(){
-    	total = 0; 
-    	mPoints.setText(players[mCurrentPlayer].getName() + " is the winner!");
-    }
-    
     
     private void animateDice(int number){    
     	boolean isPig = false;
@@ -225,24 +254,7 @@ public class DiceGame extends Activity {
     		mSounds.play();
     	}
     }
-    
-    private void updateScore(){
-    	if(mCurrentPlayer == 1){ 
-    		players[0].setScore(total);
-    		mPlayer1Points.setText("" + players[0].getScore());
-    	}else{
-    		number = 1;
-    		players[1].setScore(total);
-    		mPlayer2Points.setText("" + players[1].getScore());
-    	}
-    }
-    
-    private void nextPlayer(){
-    	updateRound();
-    	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
-    	updatePlayersColor();
-    }
-   
+       
 	private void updatePlayersColor(){
     	if(mCurrentPlayer == 1){
     		mPlayer1Name.setTextColor(getResources().getColor(R.color.white));
@@ -273,13 +285,6 @@ public class DiceGame extends Activity {
             
             mAvatarPLayer1.setBackgroundResource(avatarPlayer1.getAvatarInactive());
             mAvatarPLayer2.setBackgroundResource(avatarPlayer2.getAvatarActive());
-    	}
-    }
-    
-    private void updateRound(){
-    	if(mCurrentPlayer == 1){
-    		round++;
-            mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
     	}
     }
 }
