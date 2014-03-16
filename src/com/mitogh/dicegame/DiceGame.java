@@ -39,20 +39,20 @@ public class DiceGame extends Activity {
 	private ImageView mDice;
 	
 	// Internal elements
-	private Random random = null;
-	private int number = 1;
+	private Random mRandom = null;
+	private int mNumber = 1;
 	private Player[] players = {
 			new Player(),
 			new Player() 
 	};
 	private int mCurrentPlayer = 1;
-	private int total = 0;
-	private int round = 1;
-	private Avatars avatarPlayer1;
-	private Avatars avatarPlayer2;
-	private Message message;
+	private int mTotal = 0;
+	private int mRound = 1;
+	private Avatars mAvatarPlayer1;
+	private Avatars mAvatarPlayer2;
+	private Message mMessage;
 	private Sounds mSounds;
-	private AlphaAnimation alphaAnimation;
+	private AlphaAnimation mAlphaAnimation;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,28 +86,27 @@ public class DiceGame extends Activity {
         mDice =  (ImageView) findViewById(R.id.dice); 
         
         setUP();
-
         mRoll.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// Random number from 1 to 6;
-				number = random.nextInt(6) + 1;
-				message.setNumber(number);
+				mNumber = mRandom.nextInt(6) + 1;
+				mMessage.setNumber(mNumber);
 				mSounds.rollSound();
 				mSounds.play();
-				animateDice(number);
-				mPoints.startAnimation(alphaAnimation);
+				animateDice(mNumber);
+				mPoints.startAnimation(mAlphaAnimation);
 				
-				if(number == 1){
-					total = 0;
+				if(mNumber == 1){
+					mTotal = 0;
 					updateScore();
 					mPoints.setText("0");
 					gameFlow();
 				}else{
-					mEncouragementMessage.startAnimation(alphaAnimation);
-					total += number;
-					mPoints.setText("" + total);
+					mEncouragementMessage.startAnimation(mAlphaAnimation);
+					mTotal += mNumber;
+					mPoints.setText("" + mTotal);
 					mHold.setEnabled(true);
 				}				
 			}
@@ -133,12 +132,19 @@ public class DiceGame extends Activity {
         return true;
     }
     
+    /**
+     * There is a player who wins the game
+     * @return 	boolean	true if there is any winner player
+     */
     private boolean thereIsWinner(){
     	return (players[0].isWinner() || players[1].isWinner()); 
     }
     
+    /**
+     * Defines the gameflow basically is the handle for the next player
+     */
     private void gameFlow(){
-    	total = 0;    	
+    	mTotal = 0;    	
     	mHold.setEnabled(false);
     	new AlertDialog.Builder(this)
         .setTitle(getResources().getString(R.string.next_turn))
@@ -151,7 +157,11 @@ public class DiceGame extends Activity {
         .show();
     }
 
+    /**
+     * Show the message for the winner
+     */
     private void updateWinnerMessage(){
+    	// Get the name of the winner player
     	String winner = (players[0].isWinner()) ? mPlayer1Name.getText().toString() : mPlayer2Name.getText().toString();
     	
     	new AlertDialog.Builder(this)
@@ -166,60 +176,82 @@ public class DiceGame extends Activity {
         .show();
     }
     
+    /**
+     * Check the round number and update the round
+     */
     private void updateRound(){
     	if(mCurrentPlayer == 1){
-    		round++;
-            mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
+    		mRound++;
+            mRounds.setText(getString(R.string.round) + " " + Integer.toString(mRound));
     	}
     }
     
+    /**
+     * Update score for any of the players
+     */
     private void updateScore(){
     	if(mCurrentPlayer == 1){ 
-    		players[0].addPoints(total);
+    		players[0].addPoints(mTotal);
     		mPlayer1Points.setText("" + players[0].getScore());
     	}else{
-    		players[1].addPoints(total);
+    		players[1].addPoints(mTotal);
     		mPlayer2Points.setText("" + players[1].getScore());
     	}
     }
     
+    /**
+     * Chose the next player to play
+     */
     private void nextPlayer(){
     	updateRound();
     	mCurrentPlayer = (mCurrentPlayer + 1) % players.length;
     	updatePlayersColor();
     }
     
+    /**
+     * Setup some of the avatars and the colors for the elements of the game
+     */
+    public void setUP(){        
+    	setTypeFace();
+        mAvatarPlayer1 = new Avatars();
+        mAvatarPlayer1.newAvatar();
+        mAvatarPlayer2 = new Avatars();
+        mAvatarPlayer2.newAvatar();
+    	updatePlayersColor();
+    	mRounds.setText(getString(R.string.round) + " " + Integer.toString(mRound));
+    	clearGame();
+
+        mSounds = new Sounds(this);
+        mMessage = new Message(this);
+        mAlphaAnimation = new AlphaAnimation(0.0f, 1.0f);
+        mAlphaAnimation.setDuration(1000);
+        mRandom = new Random();
+    }
+    
+    /**
+     * Reset the elements of the game
+     */
     private void clearGame(){
-    	total = 0;
+    	mTotal = 0;
         mPlayer1Points.setText("0");
         players[0].resetScore();
+        
         mPlayer2Points.setText("0");
         players[1].resetScore();
-        round = 1;
+        
+        mRound = 1;
         mCurrentPlayer = 1;
+        
         mHold.setEnabled(false);
+        
         updateRound();
         updatePlayersColor();
         mPoints.setText("0");
     }
     
-    public void setUP(){        
-    	setTypeFace();
-        avatarPlayer1 = new Avatars();
-        avatarPlayer1.newAvatar();
-        avatarPlayer2 = new Avatars();
-        avatarPlayer2.newAvatar();
-    	updatePlayersColor();
-    	mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
-    	clearGame();
-
-        mSounds = new Sounds(this);
-        message = new Message(this);
-        alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
-        alphaAnimation.setDuration(1000);
-        random = new Random();
-    }
-    
+    /**
+     * SetUp the correct typeface for the different elements
+     */
     public void setTypeFace(){
         Typeface playball = Typeface.createFromAsset(getAssets(), "fonts/playball.ttf");
         Typeface roboto_black = Typeface.createFromAsset(getAssets(), "fonts/roboto_black.ttf");
@@ -238,6 +270,10 @@ public class DiceGame extends Activity {
         mPointsLabelPlayer2.setTypeface(roboto_black);
     }
     
+    /**
+     * Animate the dice and play the pig sound if is the case
+     * @param number	int		The number to choose the animation 
+     */
     private void animateDice(int number){    
     	boolean isPig = false;
     	    	
@@ -272,7 +308,10 @@ public class DiceGame extends Activity {
     		mSounds.play();
     	}
     }
-       
+    
+    /**
+     * Update the colors and backgrounds for the active and inactive players
+     */
 	private void updatePlayersColor(){
     	if(mCurrentPlayer == 1){
     		mPlayer1Name.setTextColor(getResources().getColor(R.color.white));
@@ -286,8 +325,8 @@ public class DiceGame extends Activity {
     		
     		mPlayerActive.setBackgroundResource(R.drawable.versus_background_left_active);
             mPlayerInactive.setBackgroundResource(R.drawable.versus_background_right_inactive);
-            mAvatarPLayer1.setBackgroundResource(avatarPlayer1.getAvatarActive());
-            mAvatarPLayer2.setBackgroundResource(avatarPlayer2.getAvatarInactive());
+            mAvatarPLayer1.setBackgroundResource(mAvatarPlayer1.getAvatarActive());
+            mAvatarPLayer2.setBackgroundResource(mAvatarPlayer2.getAvatarInactive());
     	}else{
     		mPlayer2Name.setTextColor(getResources().getColor(R.color.white));
     		mPlayer1Name.setTextColor(getResources().getColor(R.color.gray));
@@ -301,8 +340,8 @@ public class DiceGame extends Activity {
     		mPlayerActive.setBackgroundResource(R.drawable.versus_background_left_inactive);
             mPlayerInactive.setBackgroundResource(R.drawable.versus_background_right_active);
             
-            mAvatarPLayer1.setBackgroundResource(avatarPlayer1.getAvatarInactive());
-            mAvatarPLayer2.setBackgroundResource(avatarPlayer2.getAvatarActive());
+            mAvatarPLayer1.setBackgroundResource(mAvatarPlayer1.getAvatarInactive());
+            mAvatarPLayer2.setBackgroundResource(mAvatarPlayer2.getAvatarActive());
     	}
     }
 }
