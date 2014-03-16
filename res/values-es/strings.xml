@@ -7,7 +7,7 @@
     <string name="player2_name">Jugador 2</string>
     <string name="hold">GUARDAR</string>
     <string name="round">RONDA</string>
-    <string name="roll">LANZAR</string>
+    <string name="roll">TIRAR</string>
     <string name="points">PUNTOS</string>
     <string name="next_turn">Le toca al siguiente jugador</string>
     <string name="have_winner">¡Tenemos un Ganador!</string>

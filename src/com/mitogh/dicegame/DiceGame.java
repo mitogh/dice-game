@@ -98,18 +98,18 @@ public class DiceGame extends Activity {
 				mSounds.play();
 				animateDice(number);
 				mPoints.startAnimation(alphaAnimation);
-				mEncouragementMessage.startAnimation(alphaAnimation);
+				
 				if(number == 1){
 					total = 0;
 					updateScore();
 					mPoints.setText("0");
 					gameFlow();
 				}else{
+					mEncouragementMessage.startAnimation(alphaAnimation);
 					total += number;
 					mPoints.setText("" + total);
 					mHold.setEnabled(true);
-				}
-				mEncouragementMessage.setText(message.getMessage());
+				}				
 			}
 		});
         
