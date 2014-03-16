@@ -97,6 +97,7 @@ public class DiceGame extends Activity {
 				mSounds.play();
 				animateDice(mNumber);
 				mPoints.startAnimation(mAlphaAnimation);
+				mEncouragementMessage.startAnimation(mAlphaAnimation);
 				
 				if(mNumber == 1){
 					mTotal = 0;
@@ -104,11 +105,11 @@ public class DiceGame extends Activity {
 					mPoints.setText("0");
 					gameFlow();
 				}else{
-					mEncouragementMessage.startAnimation(mAlphaAnimation);
 					mTotal += mNumber;
 					mPoints.setText("" + mTotal);
 					mHold.setEnabled(true);
-				}				
+				}
+				mEncouragementMessage.setText(mMessage.getMessage());
 			}
 		});
         
