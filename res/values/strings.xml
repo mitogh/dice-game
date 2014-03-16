@@ -10,6 +10,9 @@
     <string name="roll">ROLL</string>
     <string name="points">POINTS</string>
     <string name="next_turn">Next Player Turn</string>
+    <string name="have_winner">We have a Winner</string>
+    <string name="new_game">New Game!</string>
+    <string name="congratulations">Congratulations:</string>
     <string name="description_animation">Dice animation with the different numbers and the pig, of curse!</string>
     
     

@@ -134,7 +134,7 @@ public class DiceGame extends Activity {
     }
     
     private boolean thereIsWinner(){
-    	return players[mCurrentPlayer].isWinner(); 
+    	return (players[0].isWinner() || players[1].isWinner()); 
     }
     
     private void gameFlow(){
@@ -152,9 +152,20 @@ public class DiceGame extends Activity {
     }
 
     private void updateWinnerMessage(){
-    	total = 0; 
-    	mPoints.setText(players[mCurrentPlayer].getName() + " is the winner!");
+    	String winner = (players[0].isWinner()) ? mPlayer1Name.getText().toString() : mPlayer2Name.getText().toString();
+    	
+    	new AlertDialog.Builder(this)
+        .setTitle(getResources().getString(R.string.have_winner))
+        .setMessage(getResources().getString(R.string.congratulations) + " " + winner)
+        .setPositiveButton(getResources().getString(R.string.new_game), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) { 
+            	clearGame();
+            }
+         })
+        .setIcon(R.drawable.winner)
+        .show();
     }
+    
     private void updateRound(){
     	if(mCurrentPlayer == 1){
     		round++;
@@ -167,7 +178,6 @@ public class DiceGame extends Activity {
     		players[0].setScore(total);
     		mPlayer1Points.setText("" + players[0].getScore());
     	}else{
-    		number = 1;
     		players[1].setScore(total);
     		mPlayer2Points.setText("" + players[1].getScore());
     	}
@@ -179,6 +189,14 @@ public class DiceGame extends Activity {
     	updatePlayersColor();
     }
     
+    private void clearGame(){
+        mPlayer1Points.setText("0");
+        mPlayer2Points.setText("0");
+        round = 1;
+        mCurrentPlayer = 1;
+        mHold.setEnabled(false);
+    }
+    
     public void setUP(){        
     	setTypeFace();
         avatarPlayer1 = new Avatars();
@@ -187,14 +205,8 @@ public class DiceGame extends Activity {
         avatarPlayer2.newAvatar();
     	updatePlayersColor();
     	mRounds.setText(getString(R.string.round) + " " + Integer.toString(round));
-        
-        mPlayer1Points.setText("0");
-        mPlayer2Points.setText("0");
-        
-        players[0].setName(mPlayer1Name.getText().toString());
-        players[1].setName(mPlayer2Name.getText().toString());
-        
-        mHold.setEnabled(false);
+    	clearGame();
+
         mSounds = new Sounds(this);
         message = new Message(this);
         alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
