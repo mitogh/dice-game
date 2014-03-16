@@ -5,68 +5,189 @@
     android:orientation="vertical"
 	android:background="@drawable/background_pattern"
     tools:context=".DiceGame" >
-
-   
+	
+    <!-- Hiding focus from the inputs -->
+	<LinearLayout
+    	android:focusable="true" 
+    	android:focusableInTouchMode="true"
+    	android:layout_width="@dimen/zero" 
+    	android:layout_height="@dimen/zero"/>
+	
+	<!-- Top Bar  -->
 	<LinearLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:background="@color/light_blue"
 	    android:orientation="vertical"
-	    android:layout_marginBottom="10dp">
+	    android:layout_marginBottom="@dimen/five">
 		<TextView 
         	android:id="@+id/round"
         	android:layout_width="match_parent"
         	android:layout_height="wrap_content"
-        	android:paddingTop="10dp"
-        	android:paddingBottom="10dp"
-        	android:textSize="22sp"
+        	android:paddingTop="@dimen/five"
+        	android:paddingBottom="@dimen/five"
+        	android:textSize="@dimen/bar_smallfont_size"
         	android:textColor="@color/light_blue_and_white"
-        	android:gravity="center"
-        	/>
+        	android:gravity="center"	/>
 		<View 
 		    android:layout_width="match_parent"
-    		android:layout_height="5dp"
+    		android:layout_height="@dimen/five"
 			android:background="@color/dark_blue" />
 	</LinearLayout>
 	
-    <TextView 
-        android:id="@+id/player1"
-        android:layout_width="wrap_content"
+	<!--  Versus Bar -->
+    <LinearLayout
+        android:baselineAligned="false" 
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"/>
-    
-    <TextView 
-        android:id="@+id/player2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"/>
-    
-    <TextView 
-        android:id="@+id/points"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:gravity="center"/>
-    
-    
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/ten">
+
+		<LinearLayout
+			android:id="@+id/first"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_weight="1">		
+			<ImageButton 
+		        android:id="@+id/avatar_player1"
+			    android:layout_width="80dp"
+			    android:layout_height="80dp"
+		        android:text="@string/roll"	/>
+			<LinearLayout 
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical">
+				<TextView 
+				    android:id="@+id/player1_points_label"
+				    android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="15sp"
+				    android:text="@string/points"
+				    android:gravity="center"/>
+			    <TextView 
+			        android:id="@+id/player1"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="@dimen/points_smallfont_size"	/>
+		    </LinearLayout>
+	    </LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/second"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_weight="1">
+	
+			<LinearLayout
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical" >
+
+				<TextView 
+				    android:id="@+id/player2_points_label"
+				    android:layout_width="wrap_content"
+				    android:layout_marginLeft="@dimen/five"
+				    android:textSize="15sp"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+				    android:text="@string/points"/>
+			    <TextView 
+			        android:id="@+id/player2"
+			        android:layout_marginLeft="@dimen/five"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="@dimen/points_smallfont_size" />
+		    </LinearLayout>
+
+			<ImageButton
+			    android:id="@+id/avatar_player2"
+			    android:layout_width="80dp"
+			    android:layout_height="80dp"
+			    android:text="@string/roll" />
+
+		</LinearLayout>
+	</LinearLayout>
+	
+	<!-- Names Box -->
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_marginBottom="@dimen/ten">
+		<EditText
+	        android:id="@+id/editText_player1_name"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:textColor="@color/white"
+	        android:text="@string/player1_name" 
+	        style="@style/smallplayers">
+	    </EditText>
+		<EditText
+	        android:id="@+id/editText_player2_name"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:textColor="@color/gray"
+	        android:text="@string/player2_name"
+	        style="@style/smallplayers" >
+	    </EditText>
+	</LinearLayout>
+	
+    <!-- Message -->
+    <TextView
+        android:id="@+id/encouragement_message" 
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/ten"
+        style="@style/smallmessage"  />
+	
+    <!-- Dice -->
+	<ImageView
+    	android:id="@+id/dice"
+    	android:layout_width="100dp"
+    	android:layout_height="100dp"
+    	android:layout_gravity="center"
+    	android:layout_margin="@dimen/ten"
+    	android:contentDescription="@string/description_animation"
+    />
+
+    <TextView 
+        android:id="@+id/points"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_marginBottom="@dimen/ten"
+        style="@style/players"
+        />
+    
+	<!-- Buttons Bar -->
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
+	    
 	    <Button 
 	        android:id="@+id/button_hold"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/hold"
-	        android:textSize="20sp"/>
+	        android:layout_marginLeft="@dimen/ten"
+	        style="@style/button_holdsmall"/>
 	
 		<Button 
 	        android:id="@+id/button_roll"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/roll"
-	        android:textSize="20sp"/>
-	</LinearLayout>
-
+	        android:layout_marginRight="@dimen/ten"
+	        style="@style/button_rollsmall"/>
+	</RelativeLayout>
 </LinearLayout>

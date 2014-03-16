@@ -13,7 +13,11 @@
 	
     <!-- Font Sizes -->
     <dimen name="bar_font_size">42sp</dimen>
+    <dimen name="bar_smallfont_size">20sp</dimen>
     <dimen name="encouragement_message_font_size">30sp</dimen>
+    <dimen name="encouragement_message_smallfont_size">15sp</dimen>
     <dimen name="points_font_size">70sp</dimen>
+    <dimen name="points_smallfont_size">35sp</dimen>
     <dimen name="buttons_font_size">60sp</dimen>
+    <dimen name="buttons_smallfont_size">30sp</dimen>
 </resources>

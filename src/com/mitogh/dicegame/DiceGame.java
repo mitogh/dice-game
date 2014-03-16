@@ -175,10 +175,10 @@ public class DiceGame extends Activity {
     
     private void updateScore(){
     	if(mCurrentPlayer == 1){ 
-    		players[0].setScore(total);
+    		players[0].addPoints(total);
     		mPlayer1Points.setText("" + players[0].getScore());
     	}else{
-    		players[1].setScore(total);
+    		players[1].addPoints(total);
     		mPlayer2Points.setText("" + players[1].getScore());
     	}
     }
@@ -190,11 +190,17 @@ public class DiceGame extends Activity {
     }
     
     private void clearGame(){
+    	total = 0;
         mPlayer1Points.setText("0");
+        players[0].resetScore();
         mPlayer2Points.setText("0");
+        players[1].resetScore();
         round = 1;
         mCurrentPlayer = 1;
         mHold.setEnabled(false);
+        updateRound();
+        updatePlayersColor();
+        mPoints.setText("0");
     }
     
     public void setUP(){        

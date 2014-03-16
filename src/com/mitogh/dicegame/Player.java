@@ -13,7 +13,12 @@ public class Player {
 	public int getScore() {
 		return mScore;
 	}
-	public void setScore(int score) {
+	
+	public void resetScore(){
+		mScore = 0;
+	}
+	
+	public void addPoints(int score) {
 		if(mScore >= 0) 	mScore += score;
 	}
 	

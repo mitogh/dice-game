@@ -12,7 +12,7 @@
     	android:focusableInTouchMode="true"
     	android:layout_width="@dimen/zero" 
     	android:layout_height="@dimen/zero"/>
-	
+
 	<!-- Top Bar  -->
 	<LinearLayout 
 	    android:layout_width="match_parent"
