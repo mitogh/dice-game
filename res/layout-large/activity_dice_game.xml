@@ -153,7 +153,7 @@
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	android:layout_gravity="center"
-    	android:layout_margin="@dimen/twenty"
+    	android:layout_margin="@dimen/ten"
     	android:contentDescription="@string/description_animation"
     />
 
@@ -161,10 +161,10 @@
         android:id="@+id/points"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="120dp"
+        android:textSize="100dp"
         android:gravity="center"
-        android:layout_marginTop="@dimen/fourty"
-        android:layout_marginBottom="@dimen/twenty"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_marginBottom="@dimen/ten"
         style="@style/players"
         />
     
