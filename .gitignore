@@ -9,7 +9,8 @@
 
 # generated files
 gen/
-bin/*.cache
+bin/*
+!bin/*.apk
 
 # Local configuration file (sdk path, etc)
 local.properties
