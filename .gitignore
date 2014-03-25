@@ -9,7 +9,7 @@
 
 # generated files
 gen/
-bin/*
+bin/
 !bin/*.apk
 
 # Local configuration file (sdk path, etc)
