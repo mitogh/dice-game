@@ -37,7 +37,7 @@
 	</RelativeLayout>
 	
 	<!--  Versus Bar -->
-    <RelativeLayout
+    <LinearLayout
         android:baselineAligned="false" 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -107,55 +107,8 @@
 			    android:layout_width="80dp"
 			    android:layout_height="80dp"
 			    android:text="@string/roll" />
-
 		</LinearLayout>
-	</RelativeLayout>
-	
-	<!-- Names Box -->
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/ten"
-        android:layout_marginBottom="@dimen/ten">
-		<EditText
-	        android:id="@+id/editText_player1_name"
-	        android:layout_width="0dp"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:textColor="@color/white"
-	        android:text="@string/player1_name" 
-	        style="@style/smallplayers">
-	    </EditText>
-		<EditText
-	        android:id="@+id/editText_player2_name"
-	        android:layout_width="0dp"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:textColor="@color/gray"
-	        android:text="@string/player2_name"
-	        style="@style/smallplayers" >
-	    </EditText>
 	</LinearLayout>
-	
-    <!-- Message -->
-    <TextView
-        android:id="@+id/encouragement_message" 
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_margin="@dimen/ten"
-        style="@style/smallmessage"  />
-	
-    <!-- Dice -->
-	<ImageView
-    	android:id="@+id/dice"
-    	android:layout_width="100dp"
-    	android:layout_height="100dp"
-    	android:layout_gravity="center"
-    	android:layout_margin="@dimen/ten"
-    	android:contentDescription="@string/description_animation"
-    />
 
     <TextView 
         android:id="@+id/points"
@@ -167,6 +120,7 @@
         android:layout_marginBottom="@dimen/ten"
         style="@style/players"
         />
+    
     
 	<!-- Buttons Bar -->
     <RelativeLayout 
